@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+          height: 100%;
+        }
+        
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          background-color: #ffffff;
+          text-align: center;
+          overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+            overflow: hidden;
+        }
+        
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .ban{
+        	width: 84%;
+            position: absolute;
+            top:17%;
+            left:8%;
+            box-shadow: 0 0 10px 1px black;
+        }
+        
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+		    -webkit-mask-size: cover;
+		    mask-size: cover;
+		    -webkit-mask-repeat: no-repeat;
+		    mask-repeat: no-repeat;
+        }
+        
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+        
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        .tz1,
+        .tz2{
+            width: 6%;
+            position: absolute;     
+        }
+        .tz1{
+            top: 70%;
+            right: 2%; 
+        }
+        .tz2{
+            top: 70%;
+            left: 2%; 
+        }
+        .ye,
+        .hua,
+        .cao{
+            width: 28%;
+            position: absolute;
+            overflow: hidden;
+        }
+        .ye{
+            top:80%;
+            left:36%
+        }
+        .hua{
+            top:91%;
+            left:5%
+        }
+        .cao{
+            top:91%;
+            right:5%
+        }
+		.picture1 {
+			position: absolute;
+		    top: 26%;
+		    left: 25%;
+		    width: 50%;
+		    display:block ;
+		}
+		.picture2 {
+			position: absolute;
+		    top: 29%;
+		    left: 30%;
+		    width: 40%;
+		    display:none ;
+		}
+		.picture3 {
+			position: absolute;
+		    top: 17%;
+		    left: 8%;
+		    width: 84%;
+		    display:none ;
+		}
+
+        @keyframes ripple {
+		  0% {
+		    transform: scale(1);
+		    opacity: 0.7;
+		  }
+
+		  100% {
+		    transform: scale(1.1);
+		    opacity: 1;
+		  }
+		}
+        @media (max-width: 640px) {
+            .container {
+                height: 100%;
+            }
+        }
+    </style>
+    <script>
+        function redirectToNextPage1() {
+            window.location.href = "http://lixinxinkongjian.gitee.io/history";
+        }
+
+        function toggleMusic() {
+            var audio = document.getElementById("music");
+            var musicIcon = document.getElementById("music-icon");
+
+            if (audio.paused) {
+                audio.play();
+                musicIcon.src = "js/yy1.png";
+            } else {
+                audio.pause();
+                musicIcon.src = "js/yy2.png";
+            }
+        }
+
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById("music");
+            audio.autoplay = true;
+            document.addEventListener('WeixinJSBridgeReady', function () { audio.play() }, false);
+        });
+
+		window.addEventListener('DOMContentLoaded', function() {
+		  var ye = document.querySelector('.ye');
+		  var hua = document.querySelector('.hua');
+		  var cao = document.querySelector('.cao')
+		
+		  var images = ['js/ye.png', 'js/hua.png', 'js/cao.png'];
+		  var currentImageIndex = 0;
+		
+		  var picture1 = document.querySelector('.picture1');
+		  picture1.style.display="block";
+		  var picture2 = document.querySelector('.picture2');
+		  var picture3 = document.querySelector('.picture3');
+		  
+		  function updateImages() {
+		    switch (currentImageIndex) {
+		      case 0:
+		        ye.src = images[0];
+		        hua.src = images[1];
+		        cao.src = images[2];
+		        picture1.style.display="block";
+		        picture2.style.display="none";
+		        picture3.style.display="none";
+		        break;
+		      case 1:
+		        ye.src = images[2];
+		        hua.src = images[0];
+		        cao.src = images[1];
+		        picture1.style.display="none";
+		        picture2.style.display="none";
+		        picture3.style.display="block";		        
+		        break;
+		      case 2:
+		        ye.src = images[1];
+		        hua.src = images[2];
+		        cao.src = images[0];
+		        picture1.style.display="none";
+		        picture2.style.display="block";
+		        picture3.style.display="none";
+		        break;
+		      default:
+		        break;
+		    }
+		  }
+		
+		  var startX, startY;
+		
+		  function handleStart(e) {
+		    startX = e.clientX || e.touches[0].clientX;
+		    startY = e.clientY || e.touches[0].clientY;
+		  }
+		  
+		  		
+		  function handleEnd(e) {
+		    var endX = e.clientX || e.changedTouches[0].clientX;
+		    var endY = e.clientY || e.changedTouches[0].clientY;
+		    var diffX = endX - startX;
+		    var diffY = endY - startY;
+		
+		    if (Math.abs(diffX) > Math.abs(diffY)) {
+		      if (diffX > 0) {
+		        // 向右滑动
+		        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+		      } else {
+		        // 向左滑动
+		        currentImageIndex = (currentImageIndex + 1) % images.length;
+		      }
+		
+		      updateImages();
+		    }
+		  }
+		
+		  document.addEventListener('mousedown', handleStart);
+		  document.addEventListener('touchstart', handleStart);
+		
+		  document.addEventListener('mouseup', handleEnd);
+		  document.addEventListener('touchend', handleEnd);
+		});
+		
+		function redirectToNextPage3() {
+		    var picture1 = document.querySelector('.picture1');
+		    var picture2 = document.querySelector('.picture2');
+		    var picture3 = document.querySelector('.picture3');
+		    var imageUrl;
+		    var currentImage;
+		    if (picture1.style.display === "block") {
+		        imageUrl = picture1.src;
+		        currentImage = 1;
+		    } else if (picture2.style.display === "block") {
+		        imageUrl = picture2.src;
+		        currentImage = 2;
+		    } else if (picture3.style.display ==="block"){
+		        imageUrl = picture3.src;
+		        currentImage = 3;
+		    }
+		
+		    window.location.href = "cwy.html?imageUrl=" + encodeURIComponent(imageUrl) + "&currentImage=" + currentImage;
+		}
+
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="js/07.jpg" class="bj" />
+        <img src="js/ban.png" class="ban" />
+        <img src="js/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="js/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="js/syb.png" class="tz2" onclick="redirectToNextPage1()">
+        <img src="js/xyb.png" class="tz1" onclick="redirectToNextPage3()">
+        <img src="js/ye.png" class="ye">
+        <img src="js/hua.png" class="hua">
+        <img src="js/cao.png" class="cao">
+		<img class="picture1" src="js/ye.png" />
+		<img class="picture2" src="js/hua.png" />
+		<img class="picture3" src="js/cao.png" />
+    </div>
+</div>
+<audio id="music" src="js/music.mp3" autoplay="autoplay"></audio>
+
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+        }
+
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+        }
+        @keyframes ripple {
+		  0% {
+		    transform: scale(1);
+		    opacity: 0.7;
+		  }
+		}
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        .zs{
+        	overflow: hidden;
+            position: absolute;
+            width: 80%;
+            height: auto; /* 让高度根据宽度自适应 */
+            max-height: 100vh;
+            opacity: 1;
+            z-index: 1;
+            right:10%;
+            top: 12%;
+        }
+        .t{
+        	overflow: hidden;
+            position: absolute;
+            width: 70%;
+            height: auto; /* 让高度根据宽度自适应 */
+            max-height: 100vh;
+            opacity: 1;
+            z-index: 2;
+            right:14.5%;
+            top: 37%;
+        }
+        .w{
+        	overflow: hidden;
+            position: absolute;
+            width: 60%;
+            height: auto; /* 让高度根据宽度自适应 */
+            max-height: 100vh;
+            opacity: 1;
+            z-index: 2;
+            left:2%;
+            top: 14%;
+        }
+    </style>
+<script>
+    function redirectToNextPage1() {
+        window.location.href = "wenc.html?num"+num;
+    }
+
+    function toggleMusic() {
+        var audio = document.getElementById("music");
+        var musicIcon = document.getElementById("music-icon");
+
+        if (audio.paused) {
+            audio.play();
+            musicIcon.src = "img/yy1.png";
+        } else {
+            audio.pause();
+            musicIcon.src = "img/yy2.png";
+        }
+    }
+    function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	    results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	var num=getParameterByName('num');
+	var shu=getParameterByName('shu');
+        function getCenterImage() {
+            var w = document.querySelector('.t');    
+            var t = document.querySelector('.w');
+		      	if(num==1){
+		      		w.src="js/yhd1.png";
+		      		if(shu==1){
+		      			t.src="img/yhdzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/yhdd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/yhdbz.png";
+		      		}
+		      	}
+		      	else if(num==2){
+		      		w.src="js/hhd1.png";
+		      		if(shu==1){
+		      			t.src="img/hhdzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/hhdd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/hhdbz.png";
+		      		}		      		
+		      	}
+		      	else if(num==3){
+		      		w.src="js/chd1.png";
+		      		if(shu==1){
+		      			t.src="img/chdzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/chdd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/chdbz.png";
+		      		}		      		
+		      	}
+		      	else if(num==4){
+		      		w.src="js/yh1.png";
+		      		if(shu==1){
+		      			t.src="img/yhzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/yhd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/yhbz.png";
+		      		}		      		
+		      	}
+		      	else if(num==5){
+		      		w.src="js/hh1.png";
+		      		if(shu==1){
+		      			t.src="img/hhzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/hhdd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/hhdbz.png";
+		      		}		      		
+		      	}
+		      	else if(num==6){
+		      		w.src="js/ch1.png";
+		      		if(shu==1){
+		      			t.src="img/chzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/chdd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/chbz.png";
+		      		}		      		
+		      	}
+		      	else if(num==7){
+		      		w.src="js/yey1.png";
+		      		if(shu==1){
+		      			t.src="img/yyzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/yyd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/yybz.png";
+		      		}		      		
+		      	}
+		      	else if(num==8){
+		      		w.src="js/hy1.png";
+		      		if(shu==1){
+		      			t.src="img/hyzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/hyd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/hybz.png";
+		      		}		      		
+		      	}
+		      	else if(num==9){
+		      		w.src="js/cy1.png";
+		      		if(shu==1){
+		      			t.src="img/cyzs.jpg";
+		      			t.style.width="33%";
+		      			t.style.left="15.8%";
+		      			t.style.top="19%";
+		      		}
+		      		else if(shu==2){
+		      			t.src="img/cyd.png";
+		      			t.style.top="10%";
+		      		}
+		      		else if(shu==3){
+		      			t.src="img/cybz.png";
+		      		}		      		
+		      	}
+        }
+        window.addEventListener('DOMContentLoaded', getCenterImage); 
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="img/bj.png" class="bj" />
+        <img src="img/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="img/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="img/zsbj.png" class="zs" id="wc1">
+        <img src="js/yhd1.png" class="t" >
+        <img src="img/yhbz.png" class="w" >
+    </div>
+</div>
+<audio id="music" src="music.mp3" autoplay="autoplay"></audio>
+
+</body>

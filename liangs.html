@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+        }
+
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+        }
+        @keyframes ripple {
+		  0% {
+		    transform: scale(1);
+		    opacity: 0.7;
+		  }
+		}
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        .tz1,
+        .tz2{
+            width: 6%;
+            position: absolute;     
+        }
+        .tz1{
+            top: 70%;
+            right: 2%; 
+        }
+        .tz2{
+            top: 70%;
+            left: 2%; 
+        }
+        .bu{
+            width: 45%;
+            position: absolute;
+            overflow: hidden;
+            top:80%;
+            left:26%;
+            touch-action: none; 
+            animation: shake 2s infinite;
+            transform-origin: center bottom;
+        }
+        @keyframes shake {
+            0% { transform: rotate(-30deg); }
+            50% { transform: rotate(30deg); }
+            100% { transform: rotate(-30deg); }
+        }
+        .center-image {
+            position: absolute;
+            top: 22%;
+            left: 14%;
+            width: 70%;
+            max-height: 100vh;
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+    </style>
+    <script>
+        var isDragging = false; 
+
+        function redirectToNextPage1() {
+            window.location.href = "ran.html";
+        }
+
+        function toggleMusic() {
+            var audio = document.getElementById("music");
+            var musicIcon = document.getElementById("music-icon");
+
+            if (audio.paused) {
+                audio.play();
+                musicIcon.src = "js/yy1.png";
+            } else {
+                audio.pause();
+                musicIcon.src = "js/yy2.png";
+            }
+        }
+
+        function redirectToNextPage3() {
+            window.location.href = "gongj.html?num=" + num;
+        }
+
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var bu = document.querySelector('.bu');
+            bu.addEventListener('touchstart', handleStart);
+            bu.addEventListener('touchmove', handleMove);
+            bu.addEventListener('touchend', handleEnd);
+
+            var audio = document.getElementById("music");
+            audio.autoplay = true;
+            document.addEventListener('WeixinJSBridgeReady', function () { audio.play() }, false);
+        });
+        
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+		var num=getParameterByName("num");
+		
+        function handleStart(e) {
+            e.preventDefault();
+            isDragging = true;
+        }
+
+        function handleMove(e) {
+            e.preventDefault();
+            if (isDragging) {
+                var bu = document.querySelector('.bu');
+                var touch = e.touches[0];
+                bu.style.left = touch.pageX - bu.offsetWidth / 2 + 'px';
+                bu.style.top = touch.pageY - bu.offsetHeight / 2 + 'px';
+            }
+        }
+
+        function handleEnd(e) {
+            e.preventDefault();
+            isDragging = false;
+            var bu = document.querySelector('.bu');
+            var centerImage = document.querySelector('.center-image');
+            var centerImageSrc = "img/ls.png";
+
+            var buRect = bu.getBoundingClientRect();
+            var centerImageRect = centerImage.getBoundingClientRect();
+
+            if (
+                buRect.left > (centerImageRect.left/5) &&
+                buRect.right < (centerImageRect.right*5) &&
+                buRect.top > (centerImageRect.top/5) &&
+                buRect.bottom < (centerImageRect.bottom*5)
+            ) {
+                centerImage.src = centerImageSrc;
+                centerImage.style.opacity = 1;
+            }
+
+            bu.style.left = '26%';
+            bu.style.top = '80%';
+        }
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="img/07.jpg" class="bj" />
+        <img src="img/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="img/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="img/syb.png" class="tz2" onclick="redirectToNextPage1()">
+        <img src="img/xyb.png" class="tz1" onclick="redirectToNextPage3()">
+        <img class="center-image" src="img/lsg.png" />
+        <img class="bu" src="img/lsb.png"/>
+
+    </div>
+</div>
+<audio id="music" src="img/music.mp3" autoplay="autoplay"></audio>
+
+</body>
+</html>

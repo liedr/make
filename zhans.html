@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+          height: 100%;
+        }
+        
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          background-color: #ffffff;
+          text-align: center;
+          overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+            overflow: hidden;
+        }
+        
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .ban{
+            width: 84%;
+            position: absolute;
+            top:17%;
+            left:8%;
+            box-shadow: 0 0 10px 1px black;
+        }
+        
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+        
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        .tz1,
+        .tz2{
+            width: 6%;
+            position: absolute;     
+        }
+        .tz1{
+            top: 70%;
+            right: 2%; 
+        }
+        .tz2{
+            top: 70%;
+            left: 2%; 
+        }
+
+        @keyframes ripple {
+          0% {
+            transform: scale(1);
+            opacity: 0.7;
+          }
+
+          100% {
+            transform: scale(1.1);
+            opacity: 1;
+          }
+        }
+        @media (max-width: 640px) {
+            .container {
+                height: 100%;
+            }
+        }
+        
+      
+        .picture3 {
+            position: absolute;
+            top: 17%;
+            left: 8%;
+            width: 84%;
+        }
+    </style>
+    <script>
+        var isDragging = false;
+
+        function redirectToNextPage1() {
+            window.location.href = "gongj.html" ;
+        }
+
+        function toggleMusic() {
+            var audio = document.getElementById("music");
+            var musicIcon = document.getElementById("music-icon");
+
+            if (audio.paused) {
+                audio.play();
+                musicIcon.src = "js/yy1.png";
+            } else {
+                audio.pause();
+                musicIcon.src = "js/yy2.png";
+            }
+        }
+
+	    function getParameterByName(name) {
+	      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	    }
+	    var num=getParameterByName('num');
+	    num2=num;
+        function getCenterImage() {
+            var picture3 = document.querySelector('.picture3');    
+            var imageUrl = getParameterByName('imageUrl');
+            if (imageUrl) {            
+                var decodedUrl = decodeURIComponent(imageUrl);
+                picture3.src = decodedUrl;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', getCenterImage); 
+
+		
+        window.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById("music");
+            audio.autoplay = true;
+            document.addEventListener('WeixinJSBridgeReady', function () { audio.play() }, false);
+        });
+  
+
+        function redirectToNextPage3() {	
+        var picture3 = document.querySelector('.picture3');
+		var imageUrl;
+		imageUrl = picture3.src;
+		window.location.href = "wenc.html?num=" + num;
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="js/12.png" class="bj" />
+        <img src="js/ban2.png" class="ban" />
+        <img src="js/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="js/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="js/syb.png" class="tz2" onclick="redirectToNextPage1()">
+        <img src="js/xyb.png" class="tz1" onclick="redirectToNextPage3()">
+        <img class="picture3" src="" />
+    </div>
+</div>
+<audio id="music" src="js/music.mp3" autoplay="autoplay"></audio>
+
+</body>
+</html>

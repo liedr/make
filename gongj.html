@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+          height: 100%;
+        }
+        
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0;
+          padding: 0;
+          background-color: #ffffff;
+          text-align: center;
+          overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+            overflow: hidden;
+        }
+        
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .ban{
+            width: 84%;
+            position: absolute;
+            top:17%;
+            left:8%;
+            box-shadow: 0 0 10px 1px black;
+        }
+        
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+        
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        .tz1,
+        .tz2{
+            width: 6%;
+            position: absolute;     
+        }
+        .tz1{
+            top: 70%;
+            right: 2%; 
+        }
+        .tz2{
+            top: 70%;
+            left: 2%; 
+        }
+
+        @keyframes ripple {
+          0% {
+            transform: scale(1);
+            opacity: 0.7;
+          }
+
+          100% {
+            transform: scale(1.1);
+            opacity: 1;
+          }
+        }
+        @media (max-width: 640px) {
+            .container {
+                height: 100%;
+            }
+        }
+        
+        .gc{
+            position:absolute;
+            top: 81%;
+            width: 34%;
+            left: 33%; 
+            z-index: 2;
+            animation: kb 2s infinite;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        
+        .gc1{
+            position:absolute;
+            top: 81%;
+            width: 35%;
+            left: 32.5%; 
+            z-index: 1;
+            animation: kb 2s infinite;
+            -webkit-mask-size: cover;
+            mask-size: cover;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+        }
+        
+        @keyframes kb {
+          0% {
+            transform: scale(1);
+          }
+
+          100% {
+            transform: scale(1.1);
+          }
+        }        
+        .picture3 {
+            position: absolute;
+            top: 17%;
+            left: 8%;
+            width: 84%;
+        }
+    </style>
+    <script>
+        var isDragging = false;
+
+        function redirectToNextPage1() {
+            window.location.href = "liangs.html";
+        }
+
+        function toggleMusic() {
+            var audio = document.getElementById("music");
+            var musicIcon = document.getElementById("music-icon");
+
+            if (audio.paused) {
+                audio.play();
+                musicIcon.src = "js/yy1.png";
+            } else {
+                audio.pause();
+                musicIcon.src = "js/yy2.png";
+            }
+        }
+
+
+        function handleClick1() {
+            var gc1 = document.querySelector(".gc1");
+            gc1.style.display = "none";
+        }
+        
+	    function getParameterByName(name) {
+	      name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	      var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	        results = regex.exec(location.search);
+	      return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	    }
+		var num=getParameterByName("num");
+        function getCenterImage() {
+            var picture3 = document.querySelector('.picture3');    
+		      	if(num==1){
+		      		picture3.src="js/yhd2.png";
+		      	}
+		      	else if(num==2){
+		      		picture3.src="js/hhd2.png";
+		      	}
+		      	else if(num==3){
+		      		picture3.src="js/chd2.png";
+		      	}
+		      	else if(num==4){
+		      		picture3.src="js/yh2.png";
+		      	}
+		      	else if(num==5){
+		      		picture3.src="js/hh2.png";
+		      	}
+		      	else if(num==6){
+		      		picture3.src="js/ch2.png";
+		      	}
+		      	else if(num==7){
+		      		picture3.src="js/yey2.png";
+		      	}
+		      	else if(num==8){
+		      		picture3.src="js/hy2.png";
+		      	}
+		      	else if(num==9){
+		      		picture3.src="js/cy2.png";
+		      	}
+        }
+        var num2=getParameterByName("num2");
+        function getCenterImage1() {
+            var picture3 = document.querySelector('.picture3');    
+		      	if(num2==1){
+		      		picture3.src="js/yhd2.png";
+		      	}
+		      	else if(num2==2){
+		      		picture3.src="js/hhd2.png";
+		      	}
+		      	else if(num2==3){
+		      		picture3.src="js/chd2.png";
+		      	}
+		      	else if(num2==4){
+		      		picture3.src="js/yh2.png";
+		      	}
+		      	else if(num2==5){
+		      		picture3.src="js/hh2.png";
+		      	}
+		      	else if(num2==6){
+		      		picture3.src="js/ch2.png";
+		      	}
+		      	else if(num2==7){
+		      		picture3.src="js/yey2.png";
+		      	}
+		      	else if(num2==8){
+		      		picture3.src="js/hy2.png";
+		      	}
+		      	else if(num2==9){
+		      		picture3.src="js/cy2.png";
+		      	}
+        }
+        window.addEventListener('DOMContentLoaded', getCenterImage); 
+        window.addEventListener('DOMContentLoaded', getCenterImage1);
+
+        window.addEventListener('DOMContentLoaded', function() {
+            var gc = document.querySelector('.gc');
+            gc.addEventListener('touchstart', handleStart);
+            gc.addEventListener('touchmove', handleMove);
+            gc.addEventListener('touchend', handleEnd);
+            var audio = document.getElementById("music");
+            audio.autoplay = true;
+            document.addEventListener('WeixinJSBridgeReady', function () { audio.play() }, false);
+        });
+  
+        function handleStart(e) {
+            var gc1 = document.querySelector(".gc1");
+            gc1.style.display = "none";
+            e.preventDefault();
+            isDragging = true;
+            startTime = Date.now();
+        }
+
+		function handleMove(e) {
+		  e.preventDefault();
+		
+		  if (isDragging) {
+		    var gc = document.querySelector('.gc');
+		    var touch = e.touches[0];
+		
+		    var container = document.querySelector('.container');
+		    var ban = document.querySelector('.ban');
+		    var banRect = ban.getBoundingClientRect();
+		    var picture3 = document.querySelector('.picture3');
+		
+		    var maxLeft = banRect.left;
+		    var maxRight = banRect.right - gc.offsetWidth;
+		    var maxTop = banRect.top;
+		    var maxBottom = banRect.bottom - gc.offsetHeight;
+		
+		    var newLeft = touch.pageX - container.offsetLeft - gc.offsetWidth / 2;
+		    var newTop = touch.pageY - container.offsetTop - gc.offsetHeight / 2;
+		
+		    if (newLeft >= maxLeft && newLeft <= maxRight && newTop >= maxTop && newTop <= maxBottom) {
+		      gc.style.left = newLeft + 'px';
+		      gc.style.top = newTop + 'px';
+		
+		      if (Date.now() - startTime >= 1500) {
+		      	if(num==1){
+		      		picture3.src="js/yhd1.png";
+		      	}
+		      	else if(num==2){
+		      		picture3.src="js/hhd1.png";
+		      	}
+		      	else if(num==3){
+		      		picture3.src="js/chd1.png";
+		      	}
+		      	else if(num==4){
+		      		picture3.src="js/yh1.png";
+		      	}
+		      	else if(num==5){
+		      		picture3.src="js/hh1.png";
+		      	}
+		      	else if(num==6){
+		      		picture3.src="js/ch1.png";
+		      	}
+		      	else if(num==7){
+		      		picture3.src="js/yey1.png";
+		      	}
+		      	else if(num==8){
+		      		picture3.src="js/hy1.png";
+		      	}
+		      	else if(num==9){
+		      		picture3.src="js/cy1.png";
+		      	}		        
+		      }
+		    }
+		  }
+		}
+
+        function handleEnd(e) {
+            e.preventDefault();
+            isDragging = false;
+            var gc = document.querySelector('.gc');
+            gc.style.left = '33%';
+            gc.style.top = '81%';
+            var gc1 = document.querySelector(".gc1");
+            gc1.style.display = "block";
+        }
+        
+        
+        
+        var numa=0;
+        function redirectToNextPage3() {	
+        var picture3 = document.querySelector('.picture3');
+		var imageUrl;
+		imageUrl = picture3.src;
+		window.location.href = "zhans.html?imageUrl=" + encodeURIComponent(imageUrl) + "&num=" + num;
+        }
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="js/11.png" class="bj" />
+        <img src="js/ban2.png" class="ban" />
+        <img src="js/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="js/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="js/syb.png" class="tz2" onclick="redirectToNextPage1()">
+        <img src="js/xyb.png" class="tz1" onclick="redirectToNextPage3()">
+        <img src="js/gc.png" class="gc" onclick="handleClick1()"  />
+        <img src="js/gc1.png" class="gc1" />
+        <img class="picture3" src="" />
+    </div>
+</div>
+<audio id="music" src="js/music.mp3" autoplay="autoplay"></audio>
+
+</body>
+</html>

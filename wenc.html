@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>蓝印花布</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            max-width: 2500px;
+        }
+
+        .b {
+            position: relative;
+            width: 100%;
+            max-width: 2500px;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .bj {
+            width: 100%;
+            height: 100vh;
+        }
+        .z1,
+        .z2 {
+            width: 15%;
+            position: absolute;
+            animation: ripple 3s infinite;
+        }
+        @keyframes ripple {
+		  0% {
+		    transform: scale(1);
+		    opacity: 0.7;
+		  }
+		}
+        .z1 {
+            top: 0;
+            left: 1%;
+        }
+
+        .z2 {
+            top: 0;
+            right: 1%;
+        }
+        @keyframes shake {
+            0% { transform: rotate(-30deg); }
+            50% { transform: rotate(30deg); }
+            100% { transform: rotate(-30deg); }
+        }
+        .wc{
+        	overflow: hidden;
+            position: absolute;
+            width: 45%;
+            height: auto; 
+            max-height: 100vh;
+            opacity: 1;
+            transition: transform 0.3s ease-in-out;
+            z-index: 2;
+        }
+        .wc:hover {
+		  transform: scale(1.2);
+		  animation: none;
+		}
+		@keyframes shake {
+		  0% {
+		    transform: rotate(-30deg);
+		  }
+		  50% {
+		    transform: rotate(30deg);
+		  }
+		  100% {
+		    transform: rotate(-30deg);
+		  }
+		}
+		.wcg{
+        	overflow: hidden;
+            position: absolute;
+            width: 45%;
+            height: auto; 
+            max-height: 100vh;
+            opacity: 0.9;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1;
+        }
+        #wc1,#wc11{
+        	right:10%;
+            top: 17%;
+        }
+        #wc2,#wc21{
+        	left: 12%;
+            top: 31%;
+            width: 40%;
+        }
+        #wc3,#wc31{
+        	right:5%;
+            bottom: 12%;
+        }
+    </style>
+<script>
+    function redirectToNextPage1() {
+        window.location.href = "zhans.html" ;
+    }
+
+    function toggleMusic() {
+        var audio = document.getElementById("music");
+        var musicIcon = document.getElementById("music-icon");
+
+        if (audio.paused) {
+            audio.play();
+            musicIcon.src = "img/yy1.png";
+        } else {
+            audio.pause();
+            musicIcon.src = "img/yy2.png";
+        }
+    }
+
+    function hideWcg(id) {
+        var wcg = document.getElementById(id);
+        wcg.style.display = "none";
+    }
+
+    function showWcg(id) {
+        var wcg = document.getElementById(id);
+        wcg.style.display = "block";
+    }
+    
+    
+ 	function getParameterByName(name) {
+	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+	    results = regex.exec(location.search);
+	    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+	}
+	var num=getParameterByName('num');
+
+    window.addEventListener('DOMContentLoaded', function() {
+        var wc1 = document.getElementById('wc1');
+        var wc2 = document.getElementById('wc2');
+        var wc3 = document.getElementById('wc3');
+        wc1.addEventListener('mouseover', function() { hideWcg('wc11'); });
+        wc1.addEventListener('mouseout', function() { showWcg('wc11'); });
+        wc2.addEventListener('mouseover', function() { hideWcg('wc21'); });
+        wc2.addEventListener('mouseout', function() { showWcg('wc21'); });
+        wc3.addEventListener('mouseover', function() { hideWcg('wc31'); });
+        wc3.addEventListener('mouseout', function() { showWcg('wc31'); });
+
+        var audio = document.getElementById("music");
+        audio.autoplay = true;
+        document.addEventListener('WeixinJSBridgeReady', function () { audio.play() }, false);
+    });
+
+    function handleStart() {
+        console.log("Touch start.");
+    }
+
+    function handleMove() {
+        console.log("Touch move.");
+    }
+
+    function handleEnd() {
+        console.log("Touch end.");
+    }
+    var shu=0;
+    function redirectToNextPage2() {
+    	shu=1;
+        window.location.href = "wczs.html?num=" + num+"&shu=" + shu;
+    }
+    function redirectToNextPage3() {
+    	shu=2;
+        window.location.href = "wczs.html?num=" + num+"&shu=" + shu;
+    }
+    function redirectToNextPage4() {
+    	shu=3;
+        window.location.href = "wczs.html?num=" + num+"&shu=" + shu;
+    }
+
+</script>
+</head>
+<body>
+<div class="container">
+    <div class="b">
+        <img src="img/13.png" class="bj" />
+        <img src="img/fh.png" class="z1" onclick="redirectToNextPage1()" />
+        <img src="img/yy1.png" class="z2" id="music-icon" onclick="toggleMusic()" />
+        <img src="img/zs.png" class="wc" id="wc1" onclick="redirectToNextPage2()">
+        <img src="img/zsg.png" class="wcg" id="wc11">
+        <img src="img/std.png" class="wc" id="wc2" onclick="redirectToNextPage3()">
+        <img src="img/stdg.png" class="wcg" id="wc21">
+        <img src="img/bz.png" class="wc" id="wc3" onclick="redirectToNextPage4()">
+        <img src="img/bzg.png" class="wcg" id="wc31">
+    </div>
+</div>
+<audio id="music" src="music.mp3" autoplay="autoplay"></audio>
+
+</body>
